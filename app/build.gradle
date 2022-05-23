@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -29,14 +30,44 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        def kotlin_compiler_extension_version = "1.1.1"
+        kotlinCompilerExtensionVersion kotlin_compiler_extension_version
+    }
 }
 
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    def app_compat = "1.4.1"
+    implementation "androidx.appcompat:appcompat:$app_compat"
+
+    def material = "1.6.0"
+    implementation "com.google.android.material:material:$material"
+
+    def constraint_layout = "2.1.4"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+
+    def androidx_ui = "1.0.0-alpha07"
+    implementation "androidx.ui:ui-tooling:$androidx_ui"
+
+    def compose = "1.1.1"
+    implementation "androidx.compose.ui:ui:$compose"
+    implementation "androidx.compose.foundation:foundation:$compose"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose"
+    implementation "androidx.compose.runtime:runtime-rxjava2:$compose"
+    implementation "androidx.compose.material:material:$compose"
+    implementation "androidx.compose.material:material-icons-core:$compose"
+    implementation "androidx.compose.material:material-icons-extended:$compose"
+
+    def nav_version = "2.4.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/repositoryListFragment">
+
+    <fragment
+        android:id="@+id/repositoryListFragment"
+        android:name="com.yousufsohail.alligitor.RepositoryListFragment"
+        android:label="RepositoryListFragment">
+        <action
+            android:id="@+id/viewRepository"
+            app:destination="@id/repositoryDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/repositoryDetailsFragment"
+        android:name="com.yousufsohail.alligitor.RepositoryDetailFragment"
+        android:label="RepositoryDetailsFragment" />
+
+</navigation>
