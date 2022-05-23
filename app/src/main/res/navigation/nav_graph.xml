@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/repositoryListFragment"
-        android:name="com.yousufsohail.alligitor.RepositoryListFragment"
+        android:name="com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListFragment"
         android:label="RepositoryListFragment">
         <action
             android:id="@+id/viewRepository"
@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/repositoryDetailsFragment"
-        android:name="com.yousufsohail.alligitor.RepositoryDetailFragment"
+        android:name="com.yousufsohail.alligitor.presentation.ui.repository_details.RepositoryDetailFragment"
         android:label="RepositoryDetailsFragment" />
 
 </navigation>

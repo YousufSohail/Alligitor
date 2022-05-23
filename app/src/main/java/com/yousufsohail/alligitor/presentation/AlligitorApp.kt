@@ -1,4 +1,4 @@
-package com.yousufsohail.alligitor
+package com.yousufsohail.alligitor.presentation
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

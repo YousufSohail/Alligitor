@@ -1,7 +1,7 @@
 package com.yousufsohail.alligitor.di
 
 import android.content.Context
-import com.yousufsohail.alligitor.AlligitorApp
+import com.yousufsohail.alligitor.presentation.AlligitorApp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
