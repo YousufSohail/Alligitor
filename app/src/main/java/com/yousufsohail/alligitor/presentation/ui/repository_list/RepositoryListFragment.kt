@@ -32,6 +32,9 @@ class RepositoryListFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
+
+                val searchResult = viewModel.search("language", 1)
+
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
                         text = "This is Repository List Fragment",
