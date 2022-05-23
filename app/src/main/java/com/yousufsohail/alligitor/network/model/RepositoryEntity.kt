@@ -2,7 +2,7 @@ package com.yousufsohail.alligitor.network.model
 
 import com.google.gson.annotations.SerializedName
 
-class RepositoryNetworkEntity(
+class RepositoryEntity(
 
     @SerializedName("id")
     var id: Long? = null,

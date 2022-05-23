@@ -3,9 +3,9 @@ package com.yousufsohail.alligitor.network.model
 import com.yousufsohail.alligitor.domain.model.Repository
 import com.yousufsohail.alligitor.domain.util.EntityMapper
 
-class RepositoryMapper : EntityMapper<RepositoryNetworkEntity, Repository> {
+class RepositoryMapper : EntityMapper<RepositoryEntity, Repository> {
 
-    override fun mapFromEntity(entity: RepositoryNetworkEntity): Repository {
+    override fun mapFromEntity(entity: RepositoryEntity): Repository {
         return Repository(
             entity.id,
             entity.name,
@@ -17,8 +17,8 @@ class RepositoryMapper : EntityMapper<RepositoryNetworkEntity, Repository> {
         )
     }
 
-    override fun mapToEntity(domainModel: Repository): RepositoryNetworkEntity {
-        return RepositoryNetworkEntity(
+    override fun mapToEntity(domainModel: Repository): RepositoryEntity {
+        return RepositoryEntity(
             domainModel.id,
             domainModel.name,
             Owner(null, domainModel.userName, domainModel.userAvatars),
@@ -28,11 +28,11 @@ class RepositoryMapper : EntityMapper<RepositoryNetworkEntity, Repository> {
         )
     }
 
-    fun fromEntityList(initial: List<RepositoryNetworkEntity>): List<Repository> {
+    fun fromEntityList(initial: List<RepositoryEntity>): List<Repository> {
         return initial.map { mapFromEntity(it) }
     }
 
-    fun toEntityList(initial: List<Repository>): List<RepositoryNetworkEntity> {
+    fun toEntityList(initial: List<Repository>): List<RepositoryEntity> {
         return initial.map { mapToEntity(it) }
     }
 }
