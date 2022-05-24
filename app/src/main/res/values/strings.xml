@@ -2,4 +2,5 @@
     <string name="app_name">Alligitor</string>
     <string name="trending">Trending</string>
     <string name="owner_picture">Repository Owner Picture</string>
+    <string name="day_night">Day Night</string>
 </resources>
