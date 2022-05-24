@@ -17,14 +17,18 @@ class RepositoryListViewModel @Inject constructor(
 
     val repositories: MutableState<List<Repository>> = mutableStateOf(listOf())
 
+    val loading = mutableStateOf(false)
+
     init {
         search("language", 1)
     }
 
     fun search(query: String, page: Int) {
         viewModelScope.launch {
+            loading.value = true
             val result = repositoryRepository.search(query, page)
             repositories.value = result
+            loading.value = false
         }
     }
 }
