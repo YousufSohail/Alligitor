@@ -11,5 +11,5 @@ data class Repository (
     val language: String? = null,
     val stargazersCount: Long? = null,
     val userName: String? = null,
-    val userAvatars: String? = null
+    val userAvatar: String? = null
 ): Parcelable

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Alligitor</string>
+    <string name="owner_picture">Repository Owner Picture</string>
 </resources>

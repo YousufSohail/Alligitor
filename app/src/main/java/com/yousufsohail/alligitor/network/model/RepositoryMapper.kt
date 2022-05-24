@@ -21,7 +21,7 @@ class RepositoryMapper : EntityMapper<RepositoryEntity, Repository> {
         return RepositoryEntity(
             domainModel.id,
             domainModel.name,
-            Owner(null, domainModel.userName, domainModel.userAvatars),
+            Owner(null, domainModel.userName, domainModel.userAvatar),
             domainModel.description,
             domainModel.language,
             domainModel.stargazersCount
