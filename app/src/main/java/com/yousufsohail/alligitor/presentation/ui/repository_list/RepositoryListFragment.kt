@@ -16,6 +16,7 @@ import androidx.fragment.app.viewModels
 import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
 import com.yousufsohail.alligitor.presentation.components.LoadingRepositoryListShimmer
 import com.yousufsohail.alligitor.presentation.components.RepositoryListItem
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,11 +31,9 @@ class RepositoryListFragment : Fragment() {
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-
                 val searchResult = viewModel.repositories.value
                 val loading = viewModel.loading.value
                 val page = viewModel.page.value
-
 
                 Box(modifier = Modifier.fillMaxSize()) {
                     if (loading && searchResult.isEmpty()) {
@@ -44,7 +43,7 @@ class RepositoryListFragment : Fragment() {
                             itemsIndexed(items = searchResult) { index, repository ->
                                 viewModel.onChangeRepositoryScrollPosition(index)
                                 if ((index + 1) >= (page * REPOSITORY_LIST_PAGE_SIZE) && !loading) {
-                                    viewModel.nextPage()
+                                    viewModel.onTriggerEvent(NextPageEvent)
                                 }
                                 RepositoryListItem(repository = repository, onClick = {})
                             }

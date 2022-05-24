@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yousufsohail.alligitor.domain.model.Repository
 import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NewSearchEvent
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
 import com.yousufsohail.alligitor.repository.RepositoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -30,33 +32,49 @@ class RepositoryListViewModel @Inject constructor(
     var repositoryListScrollPosition = 0
 
     init {
-        search(1)
+        onTriggerEvent(NewSearchEvent)
     }
 
-    private fun search(page: Int) {
+    fun onTriggerEvent(event: RepositoryListEvent) {
         viewModelScope.launch {
-            loading.value = true
-            val result = repositoryRepository.search(query = query.value, page)
-            repositories.value = result
-            loading.value = false
+            try {
+                when (event) {
+                    is NewSearchEvent -> {
+                        search()
+                    }
+                    is NextPageEvent -> {
+                        nextPage()
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "launchJob: Exception: ${e}, ${e.cause}")
+                e.printStackTrace()
+            } finally {
+                Log.d(TAG, "launchJob: finally called.")
+            }
         }
     }
 
-    fun nextPage() {
-        viewModelScope.launch {
-            // prevent duplicate event due to recompose happening to quickly
-            if ((repositoryListScrollPosition + 1) >= (page.value * REPOSITORY_LIST_PAGE_SIZE)) {
-                loading.value = true
-                incrementPage()
-                Log.d(TAG, "nextPage: triggered: ${page.value}")
+    private suspend fun search() {
+        loading.value = true
+        val result = repositoryRepository.search(query = query.value, 1)
+        repositories.value = result
+        loading.value = false
+    }
 
-                if (page.value > 1) {
-                    val result = repositoryRepository.search(page = page.value, query = query.value)
-                    Log.d(TAG, "search: appending")
-                    appendRepositories(result)
-                }
-                loading.value = false
+    private suspend fun nextPage() {
+        // prevent duplicate event due to recompose happening to quickly
+        if ((repositoryListScrollPosition + 1) >= (page.value * REPOSITORY_LIST_PAGE_SIZE)) {
+            loading.value = true
+            incrementPage()
+            Log.d(TAG, "nextPage: triggered: ${page.value}")
+
+            if (page.value > 1) {
+                val result = repositoryRepository.search(page = page.value, query = query.value)
+                Log.d(TAG, "search: appending")
+                appendRepositories(result)
             }
+            loading.value = false
         }
     }
 
