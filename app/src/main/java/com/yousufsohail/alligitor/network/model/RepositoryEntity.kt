@@ -19,6 +19,6 @@ class RepositoryEntity(
     @SerializedName("language")
     var language: String? = null,
 
-    @SerializedName("stargazersCount")
+    @SerializedName("stargazers_count")
     var stargazersCount: Long? = null
 )

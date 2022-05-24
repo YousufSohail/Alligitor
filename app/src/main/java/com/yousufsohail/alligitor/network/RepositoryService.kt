@@ -12,7 +12,7 @@ interface RepositoryService {
     suspend fun search(
         @Query("q") query: String,
         @Query("page") page: Int = 1,
-        @Query("per_page") pageSize: Int = 10,
+        @Query("per_page") pageSize: Int = 30,
         @Query("order") sortOrder: String = "desc",
         @Query("sort") sortFactor: String = "stars",
     ): RepositorySearchResponse
