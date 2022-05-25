@@ -1,6 +1,7 @@
 package com.yousufsohail.alligitor.presentation.ui.repository_list
 
 sealed class RepositoryListEvent {
-    object NewSearchEvent : RepositoryListEvent()
+    object FetchEvent : RepositoryListEvent()
     object NextPageEvent : RepositoryListEvent()
+    object RefreshFetchEvent : RepositoryListEvent()
 }

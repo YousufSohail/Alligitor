@@ -18,8 +18,8 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
 import com.yousufsohail.alligitor.presentation.components.LoadingRepositoryListShimmer
 import com.yousufsohail.alligitor.presentation.components.RepositoryListItem
-import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NewSearchEvent
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.RefreshFetchEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +44,7 @@ class RepositoryListFragment : Fragment() {
                     } else {
                         SwipeRefresh(
                             state = rememberSwipeRefreshState(loading),
-                            onRefresh = { viewModel.onTriggerEvent(NewSearchEvent) },
+                            onRefresh = { viewModel.onTriggerEvent(RefreshFetchEvent) },
                         ) {
                             LazyColumn {
                                 itemsIndexed(items = searchResult) { index, repository ->

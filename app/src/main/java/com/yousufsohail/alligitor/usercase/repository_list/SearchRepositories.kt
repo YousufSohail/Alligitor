@@ -15,17 +15,26 @@ class SearchRepositories(
     private val repositoryDao: RepositoryDao,
     private val entityMapper: RepositoryEntityMapper,
 ) {
-    fun execute(page: Int): Flow<DataState<List<Repository>>> = flow {
+    fun execute(forceRefresh: Boolean, page: Int): Flow<DataState<List<Repository>>> = flow {
         try {
             emit(DataState.loading())
 
-            val repositoriesFromNetwork = dtoMapper.toDomainList(repositoryService.search(page = page).repositories)
-
-            repositoryDao.insertRepositories(entityMapper.fromDomainList(repositoriesFromNetwork))
-
-            val repositories = repositoryDao.getAllRecipes(page)
-
-            emit(DataState.success(entityMapper.toDomainList(repositories)))
+            if (forceRefresh) {
+                val repositoriesFromNetwork = dtoMapper.toDomainList(repositoryService.search(page = 1).repositories)
+                repositoryDao.deleteAllRepositories()
+                repositoryDao.insertRepositories(entityMapper.fromDomainList(repositoriesFromNetwork))
+                emit(DataState.success(entityMapper.toDomainList(repositoryDao.getAllRecipes(page))))
+            } else {
+                val repositories = repositoryDao.getAllRecipes(page)
+                if (repositories.isEmpty()) {
+                    val repositoriesFromNetwork =
+                        dtoMapper.toDomainList(repositoryService.search(page = page).repositories)
+                    repositoryDao.insertRepositories(entityMapper.fromDomainList(repositoriesFromNetwork))
+                    emit(DataState.success(entityMapper.toDomainList(repositoryDao.getAllRecipes(page))))
+                } else {
+                    emit(DataState.success(entityMapper.toDomainList(repositories)))
+                }
+            }
 
         } catch (e: Exception) {
             emit(DataState.error(e.message ?: "Unknown error"))

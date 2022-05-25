@@ -7,8 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yousufsohail.alligitor.domain.model.Repository
 import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
-import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NewSearchEvent
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.FetchEvent
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.RefreshFetchEvent
 import com.yousufsohail.alligitor.repository.RepositoryRepository
 import com.yousufsohail.alligitor.usercase.repository_list.SearchRepositories
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,27 +28,28 @@ class RepositoryListViewModel @Inject constructor(
 
     val repositories: MutableState<List<Repository>> = mutableStateOf(listOf())
 
-    val query = mutableStateOf("language")
-
     val loading = mutableStateOf(false)
 
     val page = mutableStateOf(1)
 
-    var repositoryListScrollPosition = 0
+    private var repositoryListScrollPosition = 0
 
     init {
-        onTriggerEvent(NewSearchEvent)
+        onTriggerEvent(FetchEvent)
     }
 
     fun onTriggerEvent(event: RepositoryListEvent) {
         viewModelScope.launch {
             try {
                 when (event) {
-                    is NewSearchEvent -> {
-                        search()
+                    is FetchEvent -> {
+                        fetch(false)
                     }
                     is NextPageEvent -> {
                         nextPage()
+                    }
+                    RefreshFetchEvent -> {
+                        fetch(true)
                     }
                 }
             } catch (e: Exception) {
@@ -59,11 +61,11 @@ class RepositoryListViewModel @Inject constructor(
         }
     }
 
-    private fun search() {
+    private fun fetch(forceRefresh: Boolean) {
         // New search. Reset the state
         resetSearchState()
 
-        searchRepositories.execute(page.value).onEach { dataState ->
+        searchRepositories.execute(forceRefresh, page.value).onEach { dataState ->
             loading.value = dataState.loading
             dataState.data?.let { list ->
                 repositories.value = list
@@ -81,14 +83,12 @@ class RepositoryListViewModel @Inject constructor(
             Log.d(TAG, "nextPage: triggered: ${page.value}")
 
             if (page.value > 1) {
-                searchRepositories.execute(page.value).onEach { dataState ->
+                searchRepositories.execute(false, page.value).onEach { dataState ->
                     loading.value = dataState.loading
                     dataState.data?.let { list ->
                         appendRepositories(list)
                     }
-                    dataState.error?.let { error ->
-                        TODO("Show error UI")
-                    }
+                    dataState.error?.let {}
                 }.launchIn(viewModelScope)
             }
         }
