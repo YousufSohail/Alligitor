@@ -40,7 +40,7 @@ expertise on them to potential employers. 😄
 - Custom Pagination
 - Pull to Refresh
 
-## 🚦 Testing 🗜
+## 🚦 Testing
 
 - [OKHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 - [JUnit5](https://github.com/mannodermaus/android-junit5)
