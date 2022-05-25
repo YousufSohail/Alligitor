@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoadingRepositoryListShimmer(
+fun ShimmerLoadingRepositoryList(
     imageHeight: Dp,
     padding: Dp = 16.dp
 ) {
