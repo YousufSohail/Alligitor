@@ -52,17 +52,18 @@ expertise on them to potential employers. 😄
 ## 🎳 Backlog
 
 - Integration Testing
+- CI & CD (to Firebase & PlayStore)
 - Theming with compose
-- UI Testing
+- UI Testing with Espresso
+- BDD via [Cucumber](https://cucumber.io/tools/cucumber-open/)
 
-## 🛣 Experiment Roadmap
+## 🛣 Future Roadmap
 
 - [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/lp/mobile/) migration
-- [GraphQL](https://www.apollographql.com/docs/kotlin/)
-- [SQLDelight](https://cashapp.github.io/sqldelight/)
+- [GraphQL](https://www.apollographql.com/docs/kotlin/) replacing REST
+- [SQLDelight](https://cashapp.github.io/sqldelight/) replacing Room
 - [Ktor](https://ktor.io/)
 - [Material Design 3](https://m3.material.io/) support
-
 - [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) for web and desktop
 
 ## 📱 Download Demo on Android
