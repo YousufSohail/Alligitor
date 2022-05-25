@@ -1,5 +1,5 @@
 # Alligitor
-*An alligator exploring github repositories*
+*An alligator exploring github repositories 💻🐊*
 
 This sample Android app lets users browse trending "language" related repositories on Github. I created and maintaining
 this app to serve as a playground for me to get hands-on with all the cool new stuff and also to demonstrate my
@@ -19,7 +19,7 @@ expertise on them to potential employers. 😄
 </p>
 </div>
 
-## Built With 🛠
+## 🛠 Built With
 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Single Activity with MVVM and Clean Architecture](https://developer.android.com/topic/architecture) - In lines with
@@ -40,20 +40,22 @@ expertise on them to potential employers. 😄
 - Custom Pagination
 - Pull to Refresh
 
+## 🚦 Testing 🗜
+
 - [OKHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 - [JUnit5](https://github.com/mannodermaus/android-junit5)
 
-## WIP:
+## 🚧 WIP
 
 - Dark Mode refinement
 
-## Backlog:
+## 🎳 Backlog
 
 - Integration Testing
 - Theming with compose
 - UI Testing
 
-## Experiment Roadmap:
+## 🛣 Experiment Roadmap
 
 - [Kotlin Multiplatform Mobile (KMM)](https://kotlinlang.org/lp/mobile/) migration
 - [GraphQL](https://www.apollographql.com/docs/kotlin/)
