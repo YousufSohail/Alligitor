@@ -64,6 +64,11 @@ expertise on them to potential employers. 😄
 
 - [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) for web and desktop
 
+## 📱 Download Demo on Android
+
+Download the [APK file from here](https://github.com/YousufSohail/Alligitor/blob/main/Alligitor-App.apk?raw=true) on
+your Android phone and enjoy the demo App :)
+
 ## 👨 Developed By
 
 <a href="https://www.linkedin.com/in/yousufsohail/" target="_blank">
