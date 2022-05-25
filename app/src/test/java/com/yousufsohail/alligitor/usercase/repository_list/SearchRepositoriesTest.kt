@@ -87,6 +87,31 @@ class SearchRepositoriesTest {
         assert(!flowItems[1].loading) // loading should be false now
     }
 
+    /**
+     * Simulate a bad request call and check if error state is emitted
+     */
+    @Test
+    fun getRepositoriesFromNetwork_emitHttpError(): Unit = runBlocking {
+
+        // condition the response
+        mockWebServer.enqueue(
+            MockResponse()
+                .setResponseCode(HttpURLConnection.HTTP_BAD_REQUEST)
+                .setBody("{}")
+        )
+
+        val flowItems = searchRepositories.execute(false, 1).toList()
+
+        // first emission should be `loading`
+        assert(flowItems[0].loading)
+
+        // Second emission should be the exception
+        val error = flowItems[1].error
+        assert(error != null)
+
+        assert(!flowItems[1].loading) // loading should be false now
+    }
+
     @AfterEach
     fun tearDown() {
         mockWebServer.shutdown()
