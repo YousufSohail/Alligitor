@@ -38,7 +38,7 @@ interface RepositoryDao {
         SELECT * FROM repositories 
         WHERE name LIKE '%' || :query || '%'
         OR description LIKE '%' || :query || '%'  
-        LIMIT :pageSize OFFSET ((:page - 1) * :pageSize)
+        ORDER BY date_updated DESC LIMIT :pageSize OFFSET ((:page - 1) * :pageSize)
         """
     )
     suspend fun searchRecipes(
@@ -53,7 +53,7 @@ interface RepositoryDao {
     @Query(
         """
         SELECT * FROM repositories 
-        LIMIT :pageSize OFFSET ((:page - 1) * :pageSize)
+        ORDER BY date_updated DESC LIMIT :pageSize OFFSET ((:page - 1) * :pageSize)
     """
     )
     suspend fun getAllRecipes(

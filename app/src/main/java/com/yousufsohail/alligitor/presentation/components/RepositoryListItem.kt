@@ -28,19 +28,22 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.yousufsohail.alligitor.R
 import com.yousufsohail.alligitor.domain.model.Repository
+import com.yousufsohail.alligitor.util.DateUtils
 
 @Preview
 @Composable
 fun PreviewRepositoryListItem() {
     RepositoryListItem(
         repository = Repository(
-            20929025,
-            "TypeScript",
-            "Type script description Type script description Type script description",
-            "TypeScript",
-            80870,
-            "microsoft",
-            "https://avatars.githubusercontent.com/u/6154722?v=4"
+            id = 20929025,
+            name = "TypeScript",
+            description = "Type script description Type script description Type script description",
+            language = "TypeScript",
+            stargazersCount = 80870,
+            ownerName = "microsoft",
+            ownerAvatarUrl = "https://avatars.githubusercontent.com/u/6154722?v=4",
+            dateCreated = DateUtils.createTimestamp(),
+            dateUpdated = DateUtils.createTimestamp(),
         )
     ) {
 

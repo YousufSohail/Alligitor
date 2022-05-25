@@ -27,6 +27,15 @@ data class RepositoryEntity(
     val ownerName: String,
 
     @ColumnInfo(name = "owner_avatar_url")
-    val ownerAvatarUrl: String
+    val ownerAvatarUrl: String,
+
+    @ColumnInfo(name = "date_created")
+    var dateCreated: Long,
+
+    @ColumnInfo(name = "date_updated")
+    var dateUpdated: Long,
+
+    @ColumnInfo(name = "date_cached")
+    var dateCached: Long
 
 )

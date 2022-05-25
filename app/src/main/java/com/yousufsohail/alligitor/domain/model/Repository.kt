@@ -1,15 +1,15 @@
 package com.yousufsohail.alligitor.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import java.util.*
 
-@Parcelize
-data class Repository (
+data class Repository(
     val id: Long,
     val name: String,
     val description: String,
     val language: String,
     val stargazersCount: Long,
     val ownerName: String,
-    val ownerAvatarUrl: String
-): Parcelable
+    val ownerAvatarUrl: String,
+    val dateCreated: Date,
+    val dateUpdated: Date,
+)

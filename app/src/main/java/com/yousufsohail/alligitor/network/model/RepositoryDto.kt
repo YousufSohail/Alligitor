@@ -20,5 +20,11 @@ class RepositoryDto(
     var language: String?,
 
     @SerializedName("stargazers_count")
-    var stargazersCount: Long
+    var stargazersCount: Long,
+
+    @SerializedName("created_at")
+    var createdAt: String,
+
+    @SerializedName("updated_at")
+    var updatedAt: String,
 )
