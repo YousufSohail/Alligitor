@@ -1,4 +1,5 @@
 # Alligitor
+
 *Alligator exploring github repositories*
 
 This sample Android app lets users browse trending "language" related repositories on Github. I created and maintaining
@@ -9,6 +10,10 @@ expertise on them to potential employers. 😄
   <sub>Built with ❤︎  by <a href="https://www.linkedin.com/in/yousufsohail/">YousufSohail</a></sub>
 </div>
 <br/>
+
+<div align="center">
+<img src="https://github.com/YousufSohail/Alligitor/blob/main/screenshots/Alligitor-Shimmer-Animation.png" width="230px" />  <img src="https://github.com/YousufSohail/Alligitor/blob/main/screenshots/Alligitor-Trending-Repository-Listing.png" width="230px" />  <img src="https://github.com/YousufSohail/Alligitor/blob/main/screenshots/Alligitor-No-Internet-Lottie-Animation-View.png" width="230px" />
+</div>
 
 ## Built With 🛠
 
