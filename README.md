@@ -1,5 +1,4 @@
 # 🐊 Alligitor
-
 *An alligator exploring github repositories*
 
 This sample Android app lets users browse trending "language" related repositories on Github. I created and maintaining
