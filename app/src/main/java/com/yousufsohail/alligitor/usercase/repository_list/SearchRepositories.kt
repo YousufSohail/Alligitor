@@ -23,14 +23,14 @@ class SearchRepositories(
                 val repositoriesFromNetwork = dtoMapper.toDomainList(repositoryService.search(page = 1).repositories)
                 repositoryDao.deleteAllRepositories()
                 repositoryDao.insertRepositories(entityMapper.fromDomainList(repositoriesFromNetwork))
-                emit(DataState.success(entityMapper.toDomainList(repositoryDao.getAllRecipes(page))))
+                emit(DataState.success(entityMapper.toDomainList(repositoryDao.getAllRepositories(page))))
             } else {
-                val repositories = repositoryDao.getAllRecipes(page)
+                val repositories = repositoryDao.getAllRepositories(page)
                 if (repositories.isEmpty()) {
                     val repositoriesFromNetwork =
                         dtoMapper.toDomainList(repositoryService.search(page = page).repositories)
                     repositoryDao.insertRepositories(entityMapper.fromDomainList(repositoriesFromNetwork))
-                    emit(DataState.success(entityMapper.toDomainList(repositoryDao.getAllRecipes(page))))
+                    emit(DataState.success(entityMapper.toDomainList(repositoryDao.getAllRepositories(page))))
                 } else {
                     emit(DataState.success(entityMapper.toDomainList(repositories)))
                 }

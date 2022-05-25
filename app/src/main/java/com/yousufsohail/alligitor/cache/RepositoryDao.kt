@@ -17,7 +17,7 @@ interface RepositoryDao {
     suspend fun insertRepositories(repositories: List<RepositoryEntity>): LongArray
 
     @Query("SELECT * FROM repositories WHERE id = :id")
-    suspend fun getRepositoryById(id: Long): RepositoryEntity
+    suspend fun getRepositoryById(id: Long): RepositoryEntity?
 
     @Query("DELETE FROM repositories WHERE id IN (:ids)")
     suspend fun deleteRepositories(ids: List<Long>): Int
@@ -41,14 +41,14 @@ interface RepositoryDao {
         ORDER BY stargazers_count DESC LIMIT :pageSize OFFSET ((:page - 1) * :pageSize)
         """
     )
-    suspend fun searchRecipes(
+    suspend fun searchRepositories(
         query: String,
         page: Int,
         pageSize: Int = REPOSITORY_LIST_PAGE_SIZE
     ): List<RepositoryEntity>
 
     /**
-     * Same as 'searchRecipes' function, but no query.
+     * Same as 'searchRepositories' function, but no query.
      */
     @Query(
         """
@@ -56,7 +56,7 @@ interface RepositoryDao {
         ORDER BY stargazers_count DESC LIMIT :pageSize OFFSET ((:page - 1) * :pageSize)
     """
     )
-    suspend fun getAllRecipes(
+    suspend fun getAllRepositories(
         page: Int,
         pageSize: Int = REPOSITORY_LIST_PAGE_SIZE
     ): List<RepositoryEntity>
