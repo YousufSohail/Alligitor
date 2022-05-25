@@ -60,6 +60,9 @@ class RepositoryListViewModel @Inject constructor(
     }
 
     private fun search() {
+        // New search. Reset the state
+        resetSearchState()
+
         searchRepositories.execute(page.value).onEach { dataState ->
             loading.value = dataState.loading
             dataState.data?.let { list ->
@@ -89,6 +92,15 @@ class RepositoryListViewModel @Inject constructor(
                 }.launchIn(viewModelScope)
             }
         }
+    }
+
+    /**
+     * Called when a new search is executed.
+     */
+    private fun resetSearchState() {
+        repositories.value = listOf()
+        page.value = 1
+        onChangeRepositoryScrollPosition(0)
     }
 
     /**

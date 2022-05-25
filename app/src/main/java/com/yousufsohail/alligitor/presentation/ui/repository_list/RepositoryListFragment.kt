@@ -13,9 +13,12 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
 import com.yousufsohail.alligitor.presentation.components.LoadingRepositoryListShimmer
 import com.yousufsohail.alligitor.presentation.components.RepositoryListItem
+import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NewSearchEvent
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,13 +42,18 @@ class RepositoryListFragment : Fragment() {
                     if (loading && searchResult.isEmpty()) {
                         LoadingRepositoryListShimmer(imageHeight = 250.dp)
                     } else {
-                        LazyColumn {
-                            itemsIndexed(items = searchResult) { index, repository ->
-                                viewModel.onChangeRepositoryScrollPosition(index)
-                                if ((index + 1) >= (page * REPOSITORY_LIST_PAGE_SIZE) && !loading) {
-                                    viewModel.onTriggerEvent(NextPageEvent)
+                        SwipeRefresh(
+                            state = rememberSwipeRefreshState(loading),
+                            onRefresh = { viewModel.onTriggerEvent(NewSearchEvent) },
+                        ) {
+                            LazyColumn {
+                                itemsIndexed(items = searchResult) { index, repository ->
+                                    viewModel.onChangeRepositoryScrollPosition(index)
+                                    if ((index + 1) >= (page * REPOSITORY_LIST_PAGE_SIZE) && !loading) {
+                                        viewModel.onTriggerEvent(NextPageEvent)
+                                    }
+                                    RepositoryListItem(repository = repository, onClick = {})
                                 }
-                                RepositoryListItem(repository = repository, onClick = {})
                             }
                         }
                     }
