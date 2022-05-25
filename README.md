@@ -6,21 +6,9 @@ this app to serve as a playground for me to get hands-on with all the cool new s
 expertise on them to potential employers. 😄
 
 <div align="center">
-  <sub>Built with ❤︎ by <a href="https://www.linkedin.com/in/yousufsohail/">YousufSohail</a></sub>
+  <sub>Built with ❤︎  by <a href="https://www.linkedin.com/in/yousufsohail/">YousufSohail</a></sub>
 </div>
 <br/>
-
-## Features
-
-* Popular repositories related to different (programming) languages
-* Search query with pagination support
-* Comes in both light and dark mode.
-
-## Architecture
-
-* Built with Modern Android Development practices
-* Utilized Usecase, Repository pattern for data
-* Includes unit tests for Use cases, Repository, ViewModels, API Service response.
 
 ## Built With 🛠
 
