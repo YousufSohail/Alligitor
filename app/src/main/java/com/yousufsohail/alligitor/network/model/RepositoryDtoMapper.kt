@@ -12,8 +12,8 @@ class RepositoryDtoMapper : DomainMapper<RepositoryDto, Repository> {
             model.description,
             model.language.orEmpty(),
             model.stargazersCount,
-            model.owner.login,
-            model.owner.avatar_url
+            model.ownerDto.login,
+            model.ownerDto.avatar_url
         )
     }
 
@@ -21,7 +21,7 @@ class RepositoryDtoMapper : DomainMapper<RepositoryDto, Repository> {
         return RepositoryDto(
             domainModel.id,
             domainModel.name,
-            Owner(domainModel.userName, domainModel.userAvatar),
+            OwnerDto(domainModel.ownerName, domainModel.ownerAvatarUrl),
             domainModel.description,
             domainModel.language,
             domainModel.stargazersCount

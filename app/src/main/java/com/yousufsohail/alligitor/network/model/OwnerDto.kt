@@ -2,7 +2,7 @@ package com.yousufsohail.alligitor.network.model
 
 import com.google.gson.annotations.SerializedName
 
-class Owner(
+class OwnerDto(
 
     @SerializedName("login")
     var login: String,

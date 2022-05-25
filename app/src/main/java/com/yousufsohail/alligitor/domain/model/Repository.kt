@@ -10,6 +10,6 @@ data class Repository (
     val description: String,
     val language: String,
     val stargazersCount: Long,
-    val userName: String,
-    val userAvatar: String
+    val ownerName: String,
+    val ownerAvatarUrl: String
 ): Parcelable

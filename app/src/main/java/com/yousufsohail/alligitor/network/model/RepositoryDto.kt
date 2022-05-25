@@ -11,7 +11,7 @@ class RepositoryDto(
     var name: String,
 
     @SerializedName("owner")
-    var owner: Owner,
+    var ownerDto: OwnerDto,
 
     @SerializedName("description")
     var description: String,

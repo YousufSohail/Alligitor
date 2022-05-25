@@ -12,8 +12,8 @@ class RepositoryEntityMapper : DomainMapper<RepositoryEntity, Repository> {
             model.description,
             model.language,
             model.stargazersCount,
-            model.userName,
-            model.userAvatarUrl
+            model.ownerName,
+            model.ownerAvatarUrl
         )
     }
 
@@ -24,8 +24,8 @@ class RepositoryEntityMapper : DomainMapper<RepositoryEntity, Repository> {
             domainModel.description,
             domainModel.language,
             domainModel.stargazersCount,
-            domainModel.userName,
-            domainModel.userAvatar
+            domainModel.ownerName,
+            domainModel.ownerAvatarUrl
         )
     }
 }

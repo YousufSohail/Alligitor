@@ -62,7 +62,7 @@ fun RepositoryListItem(
             Row {
                 AsyncImage(
                     model = ImageRequest.Builder(LocalContext.current)
-                        .data(repository.userAvatar)
+                        .data(repository.ownerAvatarUrl)
                         .crossfade(true)
                         .build(),
                     placeholder = painterResource(R.drawable.ic_baseline_person_18),
@@ -76,7 +76,7 @@ fun RepositoryListItem(
                 Column(
                     modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
                 ) {
-                    repository.userName.let { username ->
+                    repository.ownerName.let { username ->
                         Text(
                             text = username,
                             style = MaterialTheme.typography.body2

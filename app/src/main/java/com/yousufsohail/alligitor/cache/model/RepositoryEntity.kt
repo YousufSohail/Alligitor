@@ -23,10 +23,10 @@ data class RepositoryEntity(
     @ColumnInfo(name = "stargazers_count")
     val stargazersCount: Long,
 
-    @ColumnInfo(name = "user_name")
-    val userName: String,
+    @ColumnInfo(name = "owner_name")
+    val ownerName: String,
 
-    @ColumnInfo(name = "user_avatar_url")
-    val userAvatarUrl: String
+    @ColumnInfo(name = "owner_avatar_url")
+    val ownerAvatarUrl: String
 
 )
