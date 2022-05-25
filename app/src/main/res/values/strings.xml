@@ -3,4 +3,7 @@
     <string name="trending">Trending</string>
     <string name="owner_picture">Repository Owner Picture</string>
     <string name="day_night">Day Night</string>
+    <string name="cta_retry">RETRY</string>
+    <string name="retry_title">Something went wrong...</string>
+    <string name="retry_subtitle">An alien is probably blocking your signal.</string>
 </resources>

@@ -68,10 +68,11 @@ class RepositoryListViewModel @Inject constructor(
         searchRepositories.execute(forceRefresh, page.value).onEach { dataState ->
             loading.value = dataState.loading
             dataState.data?.let { list ->
+                repositories.value = listOf()
                 repositories.value = list
             }
             dataState.error?.let { error ->
-                TODO("Show error UI")
+                repositories.value = listOf()
             }
         }.launchIn(viewModelScope)
     }
@@ -98,7 +99,6 @@ class RepositoryListViewModel @Inject constructor(
      * Called when a new search is executed.
      */
     private fun resetSearchState() {
-        repositories.value = listOf()
         page.value = 1
         onChangeRepositoryScrollPosition(0)
     }

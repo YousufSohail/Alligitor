@@ -18,6 +18,7 @@ import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
 import com.yousufsohail.alligitor.presentation.components.LoadingRepositoryListShimmer
 import com.yousufsohail.alligitor.presentation.components.RepositoryListItem
+import com.yousufsohail.alligitor.presentation.components.RetryView
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.RefreshFetchEvent
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,6 +42,8 @@ class RepositoryListFragment : Fragment() {
                 Box(modifier = Modifier.fillMaxSize()) {
                     if (loading && searchResult.isEmpty()) {
                         LoadingRepositoryListShimmer(imageHeight = 250.dp)
+                    } else if (searchResult.isEmpty()) {
+                        RetryView { viewModel.onTriggerEvent(RefreshFetchEvent) }
                     } else {
                         SwipeRefresh(
                             state = rememberSwipeRefreshState(loading),

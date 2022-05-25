@@ -67,6 +67,9 @@ dependencies {
     def accompanist_version = "0.23.1"
     implementation "com.google.accompanist:accompanist-swiperefresh:$accompanist_version"
 
+    def lottie_compose_version = "5.0.3"
+    implementation "com.airbnb.android:lottie-compose:$lottie_compose_version"
+
     def nav_version = "2.4.2"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
