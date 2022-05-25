@@ -1,12 +1,9 @@
 # Alligitor
+*Alligator exploring github repositories*
 
-Alligator exploring github repositories
-
-This sample Android app lets user browse trending "language" related repositories on Github. I created and maintaining
-this app to serve as a playground for me to get hands-on with all the cood new stuff and also to demostrate my experties
-on them to potential employeers *wink wink*.
-
-![Tests](https://github.com/YousufSohail/Alligitor/workflows/Tests/badge.svg)  [![codecov](https://codecov.io/gh/YousufSohail/Alligitor/branch/master/graph/badge.svg?token=rYP14UIojU)](https://codecov.io/gh/YousufSohail/Alligitor)
+This sample Android app lets users browse trending "language" related repositories on Github. I created and maintaining
+this app to serve as a playground for me to get hands-on with all the cool new stuff and also to demonstrate my
+expertise on them to potential employers. 😄
 
 <div align="center">
   <sub>Built with ❤︎ by <a href="https://www.linkedin.com/in/yousufsohail/">YousufSohail</a></sub>
