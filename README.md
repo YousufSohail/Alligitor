@@ -13,6 +13,9 @@ expertise on them to potential employers. 😄
 
 <div align="center">
 <img src="https://github.com/YousufSohail/Alligitor/blob/main/screenshots/Alligitor-Shimmer-Animation.png" width="230px" />  <img src="https://github.com/YousufSohail/Alligitor/blob/main/screenshots/Alligitor-Trending-Repository-Listing.png" width="230px" />  <img src="https://github.com/YousufSohail/Alligitor/blob/main/screenshots/Alligitor-No-Internet-Lottie-Animation-View.png" width="230px" />
+<p align = "center">
+*Left to right: Shimmer animation while loading, Trending repository listing, No internet connection view*
+</p>
 </div>
 
 ## Built With 🛠
