@@ -3,6 +3,7 @@ package com.yousufsohail.alligitor.di
 import androidx.room.Room
 import com.yousufsohail.alligitor.cache.RepositoryDao
 import com.yousufsohail.alligitor.cache.database.AlligitorDatabase
+import com.yousufsohail.alligitor.cache.model.RepositoryEntityMapper
 import com.yousufsohail.alligitor.presentation.AlligitorApp
 import dagger.Module
 import dagger.Provides
@@ -13,6 +14,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object CacheModule {
+
+    @Singleton
+    @Provides
+    fun provideRepositoryEntityMapper(): RepositoryEntityMapper {
+        return RepositoryEntityMapper()
+    }
 
     @Singleton
     @Provides

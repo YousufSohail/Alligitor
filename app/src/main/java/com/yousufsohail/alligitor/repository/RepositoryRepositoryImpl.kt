@@ -10,7 +10,7 @@ class RepositoryRepositoryImpl(
 ) : RepositoryRepository {
 
     override suspend fun search(query: String, page: Int): List<Repository> {
-        return dtoMapper.fromEntityList(repositoryService.search(query, page).repositories)
+        return dtoMapper.toDomainList(repositoryService.search(query, page).repositories)
     }
 
     override suspend fun get(ownerLogin: String, repoName: String): Repository {

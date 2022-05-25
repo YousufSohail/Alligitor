@@ -28,4 +28,12 @@ class RepositoryEntityMapper : DomainMapper<RepositoryEntity, Repository> {
             domainModel.ownerAvatarUrl
         )
     }
+
+    fun toDomainList(entityList: List<RepositoryEntity>): List<Repository> {
+        return entityList.map { mapToDomainModel(it) }
+    }
+
+    fun fromDomainList(domainList: List<Repository>): List<RepositoryEntity> {
+        return domainList.map { mapFromDomainModel(it) }
+    }
 }

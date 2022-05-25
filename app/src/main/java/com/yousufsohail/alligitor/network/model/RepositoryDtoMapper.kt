@@ -28,11 +28,11 @@ class RepositoryDtoMapper : DomainMapper<RepositoryDto, Repository> {
         )
     }
 
-    fun fromEntityList(initial: List<RepositoryDto>): List<Repository> {
-        return initial.map { mapToDomainModel(it) }
+    fun toDomainList(dtoList: List<RepositoryDto>): List<Repository> {
+        return dtoList.map { mapToDomainModel(it) }
     }
 
-    fun toEntityList(initial: List<Repository>): List<RepositoryDto> {
-        return initial.map { mapFromDomainModel(it) }
+    fun fromDomainList(domainList: List<Repository>): List<RepositoryDto> {
+        return domainList.map { mapFromDomainModel(it) }
     }
 }

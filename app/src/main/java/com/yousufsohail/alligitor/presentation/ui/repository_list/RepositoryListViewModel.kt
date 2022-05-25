@@ -10,12 +10,16 @@ import com.yousufsohail.alligitor.presentation.REPOSITORY_LIST_PAGE_SIZE
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NewSearchEvent
 import com.yousufsohail.alligitor.presentation.ui.repository_list.RepositoryListEvent.NextPageEvent
 import com.yousufsohail.alligitor.repository.RepositoryRepository
+import com.yousufsohail.alligitor.usercase.repository_list.SearchRepositories
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class RepositoryListViewModel @Inject constructor(
+    private val searchRepositories: SearchRepositories,
     private val repositoryRepository: RepositoryRepository
 ) : ViewModel() {
 
@@ -55,26 +59,35 @@ class RepositoryListViewModel @Inject constructor(
         }
     }
 
-    private suspend fun search() {
-        loading.value = true
-        val result = repositoryRepository.search(query = query.value, 1)
-        repositories.value = result
-        loading.value = false
+    private fun search() {
+        searchRepositories.execute(page.value).onEach { dataState ->
+            loading.value = dataState.loading
+            dataState.data?.let { list ->
+                repositories.value = list
+            }
+            dataState.error?.let { error ->
+                TODO("Show error UI")
+            }
+        }.launchIn(viewModelScope)
     }
 
-    private suspend fun nextPage() {
+    private fun nextPage() {
         // prevent duplicate event due to recompose happening to quickly
         if ((repositoryListScrollPosition + 1) >= (page.value * REPOSITORY_LIST_PAGE_SIZE)) {
-            loading.value = true
             incrementPage()
             Log.d(TAG, "nextPage: triggered: ${page.value}")
 
             if (page.value > 1) {
-                val result = repositoryRepository.search(page = page.value, query = query.value)
-                Log.d(TAG, "search: appending")
-                appendRepositories(result)
+                searchRepositories.execute(page.value).onEach { dataState ->
+                    loading.value = dataState.loading
+                    dataState.data?.let { list ->
+                        appendRepositories(list)
+                    }
+                    dataState.error?.let { error ->
+                        TODO("Show error UI")
+                    }
+                }.launchIn(viewModelScope)
             }
-            loading.value = false
         }
     }
 

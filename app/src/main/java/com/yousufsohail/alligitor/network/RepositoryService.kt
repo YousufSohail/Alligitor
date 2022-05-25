@@ -10,7 +10,7 @@ interface RepositoryService {
 
     @GET("search/repositories")
     suspend fun search(
-        @Query("q") query: String,
+        @Query("q") query: String = "language",
         @Query("page") page: Int = 1,
         @Query("per_page") pageSize: Int = 30,
         @Query("order") sortOrder: String = "desc",

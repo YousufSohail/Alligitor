@@ -17,7 +17,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRepositoryMapper(): RepositoryDtoMapper {
+    fun provideRepositoryDtoMapper(): RepositoryDtoMapper {
         return RepositoryDtoMapper()
     }
 
