@@ -1,13 +1,12 @@
 # Alligitor
-
-*Alligator exploring github repositories*
+*An alligator exploring github repositories*
 
 This sample Android app lets users browse trending "language" related repositories on Github. I created and maintaining
 this app to serve as a playground for me to get hands-on with all the cool new stuff and also to demonstrate my
 expertise on them to potential employers. 😄
 
 <div align="center">
-  <sub>Built with ❤︎  by <a href="https://www.linkedin.com/in/yousufsohail/">YousufSohail</a></sub>
+  <sub>Built with ❤︎{} by <a href="https://www.linkedin.com/in/yousufsohail/">YousufSohail</a></sub>
 </div>
 <br/>
 
@@ -44,7 +43,7 @@ expertise on them to potential employers. 😄
 - [OKHttp MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver)
 - [JUnit5](https://github.com/mannodermaus/android-junit5)
 
-### WIP:
+## WIP:
 
 - Dark Mode refinement
 
@@ -67,7 +66,7 @@ expertise on them to potential employers. 😄
 ## 📱 Download Demo on Android
 
 Download the [APK file from here](https://github.com/YousufSohail/Alligitor/blob/main/Alligitor-App.apk?raw=true) on
-your Android phone and enjoy the demo App :)
+your Android phone and enjoy the demo app :)
 
 ## 👨 Developed By
 
