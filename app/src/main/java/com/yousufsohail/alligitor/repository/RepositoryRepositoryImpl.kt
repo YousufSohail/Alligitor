@@ -14,7 +14,7 @@ class RepositoryRepositoryImpl(
     }
 
     override suspend fun get(ownerLogin: String, repoName: String): Repository {
-        return dtoMapper.mapFromEntity(repositoryService.get(ownerLogin, repoName))
+        return dtoMapper.mapToDomainModel(repositoryService.get(ownerLogin, repoName))
     }
 
 }

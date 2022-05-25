@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName
 class RepositoryDto(
 
     @SerializedName("id")
-    var id: Long? = null,
+    var id: Long,
 
     @SerializedName("name")
-    var name: String? = null,
+    var name: String,
 
     @SerializedName("owner")
-    var owner: Owner? = null,
+    var owner: Owner,
 
     @SerializedName("description")
-    var description: String? = null,
+    var description: String,
 
     @SerializedName("language")
-    var language: String? = null,
+    var language: String?,
 
     @SerializedName("stargazers_count")
-    var stargazersCount: Long? = null
+    var stargazersCount: Long
 )

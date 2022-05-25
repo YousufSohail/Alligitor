@@ -5,11 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Repository (
-    val id: Long? = null,
-    val name: String? = null,
-    val description: String? = null,
-    val language: String? = null,
-    val stargazersCount: Long? = null,
-    val userName: String? = null,
-    val userAvatar: String? = null
+    val id: Long,
+    val name: String,
+    val description: String,
+    val language: String,
+    val stargazersCount: Long,
+    val userName: String,
+    val userAvatar: String
 ): Parcelable

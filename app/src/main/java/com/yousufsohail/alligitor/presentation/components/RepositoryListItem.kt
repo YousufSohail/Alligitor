@@ -34,13 +34,13 @@ import com.yousufsohail.alligitor.domain.model.Repository
 fun PreviewRepositoryListItem() {
     RepositoryListItem(
         repository = Repository(
-            123,
-            "Type Script",
+            20929025,
+            "TypeScript",
             "Type script description Type script description Type script description",
-            "JavaScript",
-            999,
-            "Microsoft",
-            null
+            "TypeScript",
+            80870,
+            "microsoft",
+            "https://avatars.githubusercontent.com/u/6154722?v=4"
         )
     ) {
 
@@ -76,20 +76,20 @@ fun RepositoryListItem(
                 Column(
                     modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
                 ) {
-                    repository.userName?.let { username ->
+                    repository.userName.let { username ->
                         Text(
                             text = username,
                             style = MaterialTheme.typography.body2
                         )
                     }
-                    repository.name?.let { repoName ->
+                    repository.name.let { repoName ->
                         Text(
                             text = repoName,
                             modifier = Modifier.padding(top = 8.dp),
                             style = MaterialTheme.typography.h6
                         )
                     }
-                    repository.description?.let {
+                    repository.description.let {
                         Text(
                             text = it,
                             modifier = Modifier.padding(top = 8.dp),
@@ -102,7 +102,7 @@ fun RepositoryListItem(
                             .padding(top = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        repository.language?.let { language ->
+                        repository.language.let { language ->
                             Box(
                                 modifier = Modifier
                                     .size(10.dp)
@@ -114,7 +114,7 @@ fun RepositoryListItem(
                                 modifier = Modifier.padding(start = 8.dp)
                             )
                         }
-                        repository.stargazersCount?.let { starCount ->
+                        repository.stargazersCount.let { starCount ->
                             Image(
                                 painterResource(id = R.drawable.ic_star), contentDescription = null,
                                 modifier = Modifier

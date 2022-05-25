@@ -1,27 +1,27 @@
 package com.yousufsohail.alligitor.network.model
 
 import com.yousufsohail.alligitor.domain.model.Repository
-import com.yousufsohail.alligitor.domain.util.EntityMapper
+import com.yousufsohail.alligitor.domain.util.DomainMapper
 
-class RepositoryDtoMapper : EntityMapper<RepositoryDto, Repository> {
+class RepositoryDtoMapper : DomainMapper<RepositoryDto, Repository> {
 
-    override fun mapFromEntity(dto: RepositoryDto): Repository {
+    override fun mapToDomainModel(model: RepositoryDto): Repository {
         return Repository(
-            dto.id,
-            dto.name,
-            dto.description,
-            dto.language,
-            dto.stargazersCount,
-            dto.owner?.login,
-            dto.owner?.avatar_url
+            model.id,
+            model.name,
+            model.description,
+            model.language.orEmpty(),
+            model.stargazersCount,
+            model.owner.login,
+            model.owner.avatar_url
         )
     }
 
-    override fun mapToEntity(domainModel: Repository): RepositoryDto {
+    override fun mapFromDomainModel(domainModel: Repository): RepositoryDto {
         return RepositoryDto(
             domainModel.id,
             domainModel.name,
-            Owner(null, domainModel.userName, domainModel.userAvatar),
+            Owner(domainModel.userName, domainModel.userAvatar),
             domainModel.description,
             domainModel.language,
             domainModel.stargazersCount
@@ -29,10 +29,10 @@ class RepositoryDtoMapper : EntityMapper<RepositoryDto, Repository> {
     }
 
     fun fromEntityList(initial: List<RepositoryDto>): List<Repository> {
-        return initial.map { mapFromEntity(it) }
+        return initial.map { mapToDomainModel(it) }
     }
 
     fun toEntityList(initial: List<Repository>): List<RepositoryDto> {
-        return initial.map { mapToEntity(it) }
+        return initial.map { mapFromDomainModel(it) }
     }
 }
