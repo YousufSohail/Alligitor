@@ -1,9 +1,9 @@
 package com.yousufsohail.alligitor.di
 
 import com.yousufsohail.alligitor.network.RepositoryService
-import com.yousufsohail.alligitor.network.model.RepositoryMapper
+import com.yousufsohail.alligitor.network.model.RepositoryDtoMapper
 import com.yousufsohail.alligitor.repository.RepositoryRepository
-import com.yousufsohail.alligitor.repository.RepositoryRepository_Impl
+import com.yousufsohail.alligitor.repository.RepositoryRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,9 +18,9 @@ object RepositoryModule {
     @Provides
     fun provideRepositoryRepository(
         repositoryService: RepositoryService,
-        repositoryMapper: RepositoryMapper
+        repositoryDtoMapper: RepositoryDtoMapper
     ): RepositoryRepository {
-        return RepositoryRepository_Impl(repositoryService, repositoryMapper)
+        return RepositoryRepositoryImpl(repositoryService, repositoryDtoMapper)
     }
 
 }

@@ -2,7 +2,7 @@ package com.yousufsohail.alligitor.di
 
 import com.google.gson.GsonBuilder
 import com.yousufsohail.alligitor.network.RepositoryService
-import com.yousufsohail.alligitor.network.model.RepositoryMapper
+import com.yousufsohail.alligitor.network.model.RepositoryDtoMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,13 +17,13 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRepositoryMapper(): RepositoryMapper {
-        return RepositoryMapper()
+    fun provideRepositoryMapper(): RepositoryDtoMapper {
+        return RepositoryDtoMapper()
     }
 
     @Singleton
     @Provides
-    fun providesRepositoryService(): RepositoryService {
+    fun provideRepositoryService(): RepositoryService {
         return Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))

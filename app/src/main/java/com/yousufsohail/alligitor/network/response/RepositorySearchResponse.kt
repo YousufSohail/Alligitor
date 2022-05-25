@@ -1,7 +1,7 @@
 package com.yousufsohail.alligitor.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.yousufsohail.alligitor.network.model.RepositoryEntity
+import com.yousufsohail.alligitor.network.model.RepositoryDto
 
 class RepositorySearchResponse (
 
@@ -12,5 +12,5 @@ class RepositorySearchResponse (
     var isResultIncomplete: Boolean,
 
     @SerializedName("items")
-    var repositories: List<RepositoryEntity>
+    var repositories: List<RepositoryDto>
 )

@@ -1,6 +1,6 @@
 package com.yousufsohail.alligitor.network
 
-import com.yousufsohail.alligitor.network.model.RepositoryEntity
+import com.yousufsohail.alligitor.network.model.RepositoryDto
 import com.yousufsohail.alligitor.network.response.RepositorySearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,5 +21,5 @@ interface RepositoryService {
     suspend fun get(
         @Path("owner") owner: String,
         @Path("repo") repo: String
-    ): RepositoryEntity
+    ): RepositoryDto
 }
